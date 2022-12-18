@@ -10,18 +10,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  var currentUser = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: const Text("Logout"),
-      onPressed: (){
-        FirebaseAuth.instance.signOut().then((value) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SignInScreen()));
-        });
-        }
-      )
-    );
+    String? email = currentUser?.email;
+      return Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                    email!,
+                    style: TextStyle(color: Colors.white, fontSize: 17)
+                ),
+                ElevatedButton(
+                    child: const Text("Logout"),
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut().then((value) {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => const SignInScreen()));
+                      });
+                    }
+                )
+              ]
+          )
+      );
   }
 }
+
+

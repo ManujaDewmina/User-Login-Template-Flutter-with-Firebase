@@ -42,16 +42,40 @@ class _SignInScreenState extends State<SignInScreen> {
               children: <Widget>[
                 logoWidget("assert/images/login.png"),
                 const SizedBox(height: 30,),
-                reusableTextField("Enter UserName", Icons.person_outlined, false, _emailTextController),
+                reusableTextField("Enter Email", Icons.email_outlined, false, _emailTextController),
                 const SizedBox(height: 20,),
                 reusableTextField("Enter Password", Icons.lock_outlined, true, _passwordTextController),
                 const SizedBox(height: 20,),
-                signInSignUpButton(context, true, (){
-                  FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text
-                  ).then((value) => {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()))
-                  });
-                  }),
+
+                signInSignUpButton(context, true, () async {
+                  if(_emailTextController.text == ""){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        errorMessage("Enter Your Email")
+                    );
+                  }
+                  else if(_passwordTextController.text == ""){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        errorMessage("Enter Your Password")
+                    );
+                  }
+                  else {
+                    try {
+                      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text
+                      );
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                    }
+                    on FirebaseAuthException catch (e) {
+                      if (e.code == 'user-not-found') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            errorMessage("No user found for that email"));
+                      } else if (e.code == 'wrong-password') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              errorMessage("Wrong password"));
+                      }
+                    }
+                }}),
                 signUpOption()
               ],
             ),
