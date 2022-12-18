@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475519320588",
+    "project_id": "flutter-user-c70b4",
+    "storage_bucket": "flutter-user-c70b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475519320588:android:958e45d37ec0ad2f9c6429",
+        "android_client_info": {
+          "package_name": "com.manuja.sign_in_and_up_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475519320588-no7hltehbmsp2dfvlu6qv2krhng03388.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxno4g_gdR2O-5FVtAMX14V0-2e0IjA64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475519320588-no7hltehbmsp2dfvlu6qv2krhng03388.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
