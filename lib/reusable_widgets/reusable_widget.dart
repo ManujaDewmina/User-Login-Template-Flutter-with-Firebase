@@ -31,9 +31,9 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType, Tex
       ),
       filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      fillColor: Colors.white.withOpacity(0.3),
+      fillColor: Colors.white.withOpacity(0.1),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius: BorderRadius.circular(20.0),
         borderSide: const BorderSide(
           width: 0,
           style:  BorderStyle.none
@@ -46,11 +46,11 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType, Tex
   );
 }
 
-Container signInSignUpButton(BuildContext context, bool isLogin, Function onTap){
+Container signInSignUpButton(BuildContext context, String text1, Function onTap){
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 50,
-    margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+    margin: const EdgeInsets.fromLTRB(230, 10, 0, 20),
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
     child: ElevatedButton(
       onPressed: (){
@@ -64,11 +64,12 @@ Container signInSignUpButton(BuildContext context, bool isLogin, Function onTap)
           return Colors.white;
         }),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(borderRadius:  BorderRadius.circular(30))
+          RoundedRectangleBorder(borderRadius:  BorderRadius.circular(20))
         )
       ),
+
       child: Text(
-        isLogin ? 'LOG IN' : 'SIGN UP',
+        text1,
         style: const TextStyle(
           color: Colors.black87,
           fontWeight: FontWeight.bold,
@@ -91,6 +92,35 @@ SnackBar errorMessage(String msg){
         child: Column(
           children: [
             const Text("ERROR",
+              style: TextStyle(fontSize: 16, color: Colors.black87),
+            ),
+            const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+            Text(msg,
+              style: const TextStyle(color: Colors.black54,fontSize: 14),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        )
+    ),
+    behavior: SnackBarBehavior.fixed,
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+  );
+}
+
+SnackBar ackMessage(String msg){
+  return SnackBar(
+    content: Container(
+        padding: const EdgeInsets.all(16),
+        height: 80,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+        child: Column(
+          children: [
+            const Text("Info :",
               style: TextStyle(fontSize: 16, color: Colors.black87),
             ),
             const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),

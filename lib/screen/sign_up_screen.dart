@@ -25,11 +25,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: const Text(
-            "Sign Up",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold
-            ),
-          ),
+          // title: const Text(
+          //   "Sign Up",
+          //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold
+          //   ),
+          // ),
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -37,9 +37,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [
-                    //hexStringToColor("FFFFFF"),
-                    hexStringToColor("181819"),
-                    hexStringToColor("181819"),
+                    hexStringToColor("1a3f49"),
+                    hexStringToColor("244e54"),
+                    hexStringToColor("387073"),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter
@@ -47,16 +47,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 150, 20, 20),
+              padding: const EdgeInsets.fromLTRB(20, 120, 20, 20),
               child: Column(
                 children: <Widget>[
+                  headBar(),
+                  const SizedBox(height: 80,),
                   reusableTextField("Enter User Name", Icons.person_outlined, false, _userNameTextController),
                   const SizedBox(height: 20,),
                   reusableTextField("Enter Email", Icons.email_outlined, false, _emailTextController),
                   const SizedBox(height: 20,),
                   reusableTextField("Enter Password", Icons.lock_outlined, true, _passwordTextController),
                   const SizedBox(height: 20,),
-                  signInSignUpButton(context, false, () async {
+                  signInSignUpButton(context, "SIGN UP", () async {
 
                     if(_userNameTextController.text == ""){
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -76,7 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     else{
                       try {
                         UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text, password: _passwordTextController.text);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignInScreen()));
+                        User? user = FirebaseAuth.instance.currentUser;
+
+                        if (user!= null && !user.emailVerified) {
+                          await user.sendEmailVerification();
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignInScreen()));
                       }
                       on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
@@ -97,6 +104,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
         ),
+      );
+    }
+    Row headBar(){
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: const [
+          RotatedBox(quarterTurns: -1,
+              child: Text(
+                " Sign up",
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50),
+              )
+          ),
+        ],
       );
     }
   }

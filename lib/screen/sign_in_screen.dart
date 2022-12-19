@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_in_and_up_flutter/Utils/color_utils.dart';
 import 'package:sign_in_and_up_flutter/reusable_widgets/reusable_widget.dart';
+import 'package:sign_in_and_up_flutter/screen/forgot_password_screen.dart';
 import 'package:sign_in_and_up_flutter/screen/home_screen_test.dart';
 import 'package:sign_in_and_up_flutter/screen/sign_up_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -26,28 +28,29 @@ class _SignInScreenState extends State<SignInScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              //hexStringToColor("FFFFFF"),
-              hexStringToColor("181819"),
-              hexStringToColor("181819"),
+              hexStringToColor("1a3f49"),
+              hexStringToColor("244e54"),
+              hexStringToColor("387073"),
             ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
+             begin: Alignment.topCenter,
+             end: Alignment.bottomCenter
           )
         ),
-        child: SingleChildScrollView(
-          child: Padding(
+    child: SingleChildScrollView(
+    child: Padding(
             padding: EdgeInsets.fromLTRB(
-                20, MediaQuery.of(context).size.height*0.2, 20, 0),
+                20, MediaQuery.of(context).size.height*0.15, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assert/images/login.png"),
-                const SizedBox(height: 30,),
+                headBar(),
+                //logoWidget("assert/images/login.png"),
+                const SizedBox(height: 95,),
                 reusableTextField("Enter Email", Icons.email_outlined, false, _emailTextController),
                 const SizedBox(height: 20,),
                 reusableTextField("Enter Password", Icons.lock_outlined, true, _passwordTextController),
                 const SizedBox(height: 20,),
-
-                signInSignUpButton(context, true, () async {
+                forgotPassword(),
+                signInSignUpButton(context, "LOG IN", () async {
                   if(_emailTextController.text == ""){
                     ScaffoldMessenger.of(context).showSnackBar(
                         errorMessage("Enter Your Email")
@@ -76,18 +79,51 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                     }
                 }}),
+
+                const SizedBox(height: 90,),
                 signUpOption()
               ],
             ),
           ),
+         ),
         ),
-      ),
+    );
+  }
+
+  Row headBar(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: const [
+        RotatedBox(quarterTurns: -1,
+        child: Text(
+          " Sign in",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50),
+        )
+        ),
+      ],
+    );
+  }
+
+  Row forgotPassword(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword()));
+          },
+          child: const Text(
+            " Forgot Password?",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
     );
   }
 
   Row signUpOption(){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Text(
           "Don't have an account?",
