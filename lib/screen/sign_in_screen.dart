@@ -30,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
             colors: [
               hexStringToColor("1a3f49"),
               hexStringToColor("244e54"),
-              hexStringToColor("387073"),
+              hexStringToColor("4EB3A4"),
             ],
              begin: Alignment.topCenter,
              end: Alignment.bottomCenter
@@ -44,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
               children: <Widget>[
                 headBar(),
                 //logoWidget("assert/images/login.png"),
-                const SizedBox(height: 95,),
+                const SizedBox(height: 100,),
                 reusableTextField("Enter Email", Icons.email_outlined, false, _emailTextController),
                 const SizedBox(height: 20,),
                 reusableTextField("Enter Password", Icons.lock_outlined, true, _passwordTextController),
@@ -80,7 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     }
                 }}),
 
-                const SizedBox(height: 90,),
+                const SizedBox(height: 50,),
                 signUpOption()
               ],
             ),

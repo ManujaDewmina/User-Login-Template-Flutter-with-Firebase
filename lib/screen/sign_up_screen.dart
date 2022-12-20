@@ -39,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   colors: [
                     hexStringToColor("1a3f49"),
                     hexStringToColor("244e54"),
-                    hexStringToColor("387073"),
+                    hexStringToColor("4EB3A4"),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter
