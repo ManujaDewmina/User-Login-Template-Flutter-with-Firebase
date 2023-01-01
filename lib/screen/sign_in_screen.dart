@@ -39,7 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
     child: SingleChildScrollView(
     child: Padding(
             padding: EdgeInsets.fromLTRB(
-                20, MediaQuery.of(context).size.height*0.15, 20, 0),
+                20, MediaQuery.of(context).size.height*0.1, 20, 0),
             child: Column(
               children: <Widget>[
                 headBar(),
@@ -80,7 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     }
                 }}),
 
-                const SizedBox(height: 50,),
+                const SizedBox(height: 30,),
                 signUpOption()
               ],
             ),

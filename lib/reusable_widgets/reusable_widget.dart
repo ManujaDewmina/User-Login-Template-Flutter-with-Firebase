@@ -46,6 +46,10 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType, Tex
   );
 }
 
+void setState(Null Function() param0) {
+  obscureText: false;
+}
+
 Container signInSignUpButton(BuildContext context, String text1, Function onTap){
   return Container(
     width: MediaQuery.of(context).size.width,
