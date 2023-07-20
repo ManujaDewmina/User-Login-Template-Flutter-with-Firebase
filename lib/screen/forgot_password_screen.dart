@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_in_and_up_flutter/screen/sign_in_screen.dart';
 
 import '../Utils/color_utils.dart';
 import '../reusable_widgets/reusable_widget.dart';
@@ -86,7 +85,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Text(
               " Forgot \n Password",
               style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50),
-            )
+            ),
         ),
       ],
     );

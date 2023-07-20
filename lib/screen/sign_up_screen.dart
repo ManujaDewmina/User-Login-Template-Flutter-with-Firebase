@@ -47,11 +47,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 120, 20, 20),
+              padding: const EdgeInsets.fromLTRB(20, 90, 20, 20),
               child: Column(
                 children: <Widget>[
                   headBar(),
-                  const SizedBox(height: 80,),
+                  const SizedBox(height: 30,),
                   reusableTextField("Enter User Name", Icons.person_outlined, false, _userNameTextController),
                   const SizedBox(height: 20,),
                   reusableTextField("Enter Email", Icons.email_outlined, false, _emailTextController),
@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           RotatedBox(quarterTurns: -1,
               child: Text(
                 " Sign up",
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50),
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 60),
               )
           ),
         ],

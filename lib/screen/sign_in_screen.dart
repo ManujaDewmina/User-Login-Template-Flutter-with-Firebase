@@ -5,7 +5,6 @@ import 'package:sign_in_and_up_flutter/reusable_widgets/reusable_widget.dart';
 import 'package:sign_in_and_up_flutter/screen/forgot_password_screen.dart';
 import 'package:sign_in_and_up_flutter/screen/home_screen_test.dart';
 import 'package:sign_in_and_up_flutter/screen/sign_up_screen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -39,12 +38,12 @@ class _SignInScreenState extends State<SignInScreen> {
     child: SingleChildScrollView(
     child: Padding(
             padding: EdgeInsets.fromLTRB(
-                20, MediaQuery.of(context).size.height*0.1, 20, 0),
+                20, 90, 20, 0),
             child: Column(
               children: <Widget>[
                 headBar(),
                 //logoWidget("assert/images/login.png"),
-                const SizedBox(height: 100,),
+                const SizedBox(height: 50,),
                 reusableTextField("Enter Email", Icons.email_outlined, false, _emailTextController),
                 const SizedBox(height: 20,),
                 reusableTextField("Enter Password", Icons.lock_outlined, true, _passwordTextController),
@@ -97,7 +96,7 @@ class _SignInScreenState extends State<SignInScreen> {
         RotatedBox(quarterTurns: -1,
         child: Text(
           " Sign in",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 60),
         )
         ),
       ],
