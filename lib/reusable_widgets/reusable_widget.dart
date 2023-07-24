@@ -124,7 +124,7 @@ SnackBar ackMessage(String msg){
         ),
         child: Column(
           children: [
-            const Text("Info :",
+            const Text("Info",
               style: TextStyle(fontSize: 16, color: Colors.black87),
             ),
             const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
@@ -139,5 +139,32 @@ SnackBar ackMessage(String msg){
     behavior: SnackBarBehavior.fixed,
     backgroundColor: Colors.transparent,
     elevation: 0,
+  );
+}
+
+Card swapCard(String topic) {
+  return Card(
+    elevation: 10,
+    color: Colors.white12,
+    shape: const RoundedRectangleBorder(
+      side: BorderSide(
+        color: Colors.white,
+      ),
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+    ),
+    child: SizedBox(
+      width: 250,
+      height:150,
+      child: Center(
+        child: Text(
+          topic,
+          style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+          ),
+        ),
+      ),
+    ),
   );
 }
