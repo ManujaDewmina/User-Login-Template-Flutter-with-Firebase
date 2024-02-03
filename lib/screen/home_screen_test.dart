@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: hexStringToColor("1a3f49"),
               ),
             child: const Text(
-                'JOB RANKER',
+                'App Name',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -82,21 +82,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               leading: const Icon(FontAwesomeIcons.magnifyingGlassPlus),
-              title: const Text('Search Jobs'),
+              title: const Text('Section 1'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.workspace_premium),
-              title: const Text('Rated job Details'),
+              title: const Text('Section 2'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.video_label),
-              title: const Text('Job Classifier'),
+              title: const Text('Section 3'),
               onTap: () {
                 Navigator.pop(context);
               },
